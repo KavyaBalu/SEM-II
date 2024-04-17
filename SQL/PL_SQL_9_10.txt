@@ -1,0 +1,71 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Wed Apr 17 09:22:23 2024
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect system
+Enter password:
+Connected.
+
+
+
+
+SQL> declare
+  2  area number(6,2);
+  3  pi constant  number(3,2):=3.14;
+  4  radius number(5);
+  5  begin
+  6  radius:='&radius';
+  7  area:=pi*power(radius ,2);
+  8  dbms_output.put_line('radius is='||radius);
+  9  dbms_output.put_line('area is='||area);
+ 10  end;
+ 11  /
+Enter value for radius: 7
+old   6: radius:='&radius';
+new   6: radius:='7';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> /
+Enter value for radius: 7
+old   6: radius:='&radius';
+new   6: radius:='7';
+radius is=7
+area is=153.86
+
+PL/SQL procedure successfully completed.
+
+
+
+SQL> declare
+  2  radius number;
+  3  area number;
+  4  begin
+  5  radius:='&radius';
+  6  if radius<0 then
+  7  dbms_output.put_line('radius cannot be negative');
+  8  else
+  9  area:=3.14159 * radius *radius;
+ 10  dbms_output.put_line('area of the circle with radius'||radius||'is'||area);
+ 11  end if;
+ 12  end;
+ 13  /
+Enter value for radius: 7
+old   5: radius:='&radius';
+new   5: radius:='7';
+area of the circle with radius7is153.93791
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> /
+Enter value for radius: 7
+old   5: radius:='&radius';
+new   5: radius:='7';
+area of the circle with radius7is153.93791
+
+PL/SQL procedure successfully completed.
+
+SQL>
