@@ -14,7 +14,7 @@ class Product
 		s.nextLine();
 		System.out.println("Enter Product Name");
 		pname=s.nextLine();
-		System.out.println("Enter Product Price");
+		System.out.println("Enter Product Price");       
 		price=s.nextInt();
 
 		return price;
